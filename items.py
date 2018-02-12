@@ -13,8 +13,12 @@ from w3lib.html import remove_tags
 class MyItems(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    tags = scrapy.Field()
-    author = scrapy.Field()
+    tags = scrapy.Field(
+    	)
+    author = scrapy.Field(
+    	input_processor = MapCompose(str.strip),
+    	output_processor = TakeFirst()
+    	)
     description = scrapy.Field(
     	input_processor = MapCompose(str.strip),
     	output_processor = TakeFirst()
